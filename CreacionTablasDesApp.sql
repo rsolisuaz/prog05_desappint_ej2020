@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS controlpeliculas;
 CREATE DATABASE IF NOT EXISTS controlpeliculas DEFAULT CHARACTER SET utf8;
 DROP USER IF EXISTS 'IngSW'@'localhost';
 CREATE USER 'DesApp2020'@'localhost' IDENTIFIED BY 'UAZej2020';
-GRANT ALL ON controlconcursos.* TO 'DesApp2020'@'localhost';
+GRANT ALL ON controlpeliculas.* TO 'DesApp2020'@'localhost';
 
 USE controlpeliculas;
 

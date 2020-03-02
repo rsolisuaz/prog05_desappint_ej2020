@@ -57,7 +57,7 @@ echo "</table>\n";
 $conn=NULL;
 $result=NULL;
 $mensajeerror="";
-$contenido="<table>\n<tr><th>Tablas en controlconcursos</th></tr>\n";
+$contenido="<table>\n<tr><th>Tablas en controlpeliculas</th></tr>\n";
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 include 'config.php';
 try {
@@ -90,16 +90,16 @@ else {
 $dsn="mysql:host=$hostdb;dbname=$nombredb";
 $mensajeerror="";
 $pdo=NULL;
-$contenido="<table>\n<tr><th>Instituciones con id_entidad_institucion=$identidad</th></tr>\n";
+$contenido="<table>\n<tr><th>Usuarios con id_entidad=$identidad</th></tr>\n";
 $pdo = new PDO($dsn, $usuariodb,$clavedb,array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
  try {
-	$sql = "SELECT nombre_institucion FROM institucion WHERE id_entidad_institucion = :identidad";
+	$sql = "SELECT nombre FROM usuario WHERE id_entidad = :identidad";
 	$valores = [":identidad" => $identidad];
 	$query = $pdo->prepare($sql);
 	$result = $query->execute($valores);
 	if ($result) {
 		while ($registro = $query->fetch(PDO::FETCH_ASSOC)) {
-			$contenido.="<tr><td>{$registro['nombre_institucion']}</td></tr>\n";
+			$contenido.="<tr><td>{$registro['nombre']}</td></tr>\n";
 		}
 	}
 	$contenido.="</table>\n";
